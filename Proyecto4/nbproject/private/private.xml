@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/xavi/Documents/NetBeansProjects/Proyecto4/src/java/Servlet/Enviar.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/Servlet/Inicio.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/grafospeso/GrafoSingleton.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/grafospeso/Nodo.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/Servlet/Adicionar.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/grafospeso/Grafo.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/Servlet/adminController.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/grafospeso/Camino.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/grafospeso/Arista.java</file>
+            <file>file:/C:/Users/xavi/Documents/GitHub/AgenciaViajesServidor/Proyecto4/src/java/Servlet/AdicionarRuta.java</file>
         </group>
     </open-files>
 </project-private>

@@ -43,50 +43,116 @@ public class Inicio extends HttpServlet {
             out.println("<body>");
 
             out.println("<div>");
+            out.println("<div>");
+            out.println("<div>");
             out.println("<form method=\"get\" action=\"/Proyecto4/Adicionar\">");
-            out.println("Nuevo Punto: <input id=\"nombre\" name=\"nombre\" type=\"text\" placeholder=\"Ingrese nombre de nuevo punto\" required=\"false\"/>");
-            out.println("<input id=\"nuevo\" type=\"submit\" value=\"Añadir nuevo punto\"/>");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<td>");
+            out.println("Nueva Ciudad:");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input id=\"nombre\" name=\"nombre\" type=\"text\" placeholder=\"Ingrese nombre de la ciudad\" required=\"false\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td colspan=\"2\">");
+            out.println("<input id= \nuevo\" type=\"submit\" value=\"Crear\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("</table>");
             out.println("</form>");
-
             out.println("</div>");
-            out.println("<H1></H1>");
+
+            out.println("<br>");
+
             out.println("<div>");
-            out.println("<form method=\"get\" action=\"/Proyecto4/RutaAdicionar\">");
+            out.println("<label>");
+            out.println("Puntos:");
+            out.println("</label>");
+            out.println("<label>");
+            out.println(GrafoSingleton.instanciaCosto().mostrarVertices());
+            out.println("</label>");
+            out.println("</div>");
+
+            out.println("<br>");
+
             out.println("<div>");
+            out.println("<form method=\"get\" action=\"/Proyecto4/AdicionarRuta\">");
+            out.println("<table");
+            out.println("<tr>");
+            out.println("<td>");
             out.println("<label>");
             out.println("Origen:");
             out.println("</label>");
-            
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<select name= \"origen\">");
             Grafo grafo = GrafoSingleton.instanciaCosto();
             List<String> vertices = grafo.getIdsVertices();
-            out.println("<select name=\"origen\" >");
             for (String vertice : vertices) {
                 out.println("<option value=\"" + vertice + "\">" + vertice + "</option>");
             }
             out.println("</select>");
-            out.println("<H1></H1>");
-            out.println("<div>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td>");
             out.println("<label>");
             out.println("Destino:");
             out.println("</label>");
+            out.println("</td>");
+            out.println("<td>");
             out.println("<select name=\"destino\">");
             for (String vertice : vertices) {
                 out.println("<option value=\"" + vertice + "\">" + vertice + "</option>");
             }
             out.println("</select>");
-            out.println("<H1></H1>");
-            out.println("Costo: <input id=\"costo\" name=\"costo\" type=\"int\" placeholder=\"Ingrese el precio\" required=\"true\"/>");
-            out.println("<H1></H1>");
-            out.println("Tiempo: <input id=\"tiempo\" name=\"tiempo\" type=\"int\" placeholder=\"Ingrese el tiempo de demora\" required=\"true\"/>");
-            out.println("<H1></H1>");
-            out.println("<input id=\"ruta\" type=\"submit\" value=\"Añadir ruta\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td>");
+            out.println("<label>");
+            out.println("Costo:");
+            out.println("</label>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input id=\"costo\" name=\"costo\" type=\"int\" placeholder=\"Ingrese costo destino\" required=\"true\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td>");
+            out.println("<label>");
+            out.println("Tiempo de viaje:");
+            out.println("</label>");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input id=\"tiempo\" name=\"tiempo\" type=\"int\" placeholder=\"Ingrese el tiempo de viaje\" required=\"true\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td colspan=\"2\">");
+            out.println("<input id=\"ruta\" type=\"submit\" value=\"Guardar Ruta\" name=\"pulsado\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("</table>");
             out.println("</form>");
             out.println("</div>");
+            out.println("</div>");
+
+            out.println("<br>");
 
             out.println("<div>");
             out.println("<label>");
-            out.println(GrafoSingleton.instanciaCosto().mostrar());
+            out.println("Destinos:");
             out.println("</label>");
+            String pulsado = request.getParameter("submit");
+            if (pulsado.equals("Guardar Ruta")) {
+                out.println("<label>");
+                out.println(GrafoSingleton.instanciaCosto().mostrarAristas());
+                out.println("</label>");
+            }
+            out.println("</div>");
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
@@ -133,3 +199,58 @@ public class Inicio extends HttpServlet {
     }// </editor-fold>
 
 }
+
+
+/*
+out.println("<div>");
+            out.println("<form method=\"get\" action=\"/Proyecto4/Adicionar\">");
+            out.println("Nuevo Punto: <input id=\"nombre\" name=\"nombre\" type=\"text\" placeholder=\"Ingrese nombre de nuevo punto\" required=\"false\"/>");
+            out.println("<input id=\"nuevo\" type=\"submit\" value=\"Añadir nuevo punto\"/>");
+            out.println("</form>");
+
+            out.println("</div>");
+            out.println("<H1></H1>");
+            out.println("<div>");
+            out.println("<form method=\"get\" action=\"/Proyecto4/AdicionarRuta\">");
+            out.println("<div>");
+            out.println("<label>");
+            out.println("Origen:");
+            out.println("</label>");
+Grafo grafo = GrafoSingleton.instanciaCosto();
+            List<String> vertices = grafo.getIdsVertices();
+            out.println("<select name=\"origen\" >");
+            for (String vertice : vertices) {
+                out.println("<option value=\"" + vertice + "\">" + vertice + "</option>");
+            }
+            out.println("</select>");
+            out.println("<H1></H1>");
+            out.println("<div>");
+            out.println("<label>");
+            out.println("Destino:");
+            out.println("</label>");
+            out.println("<select name=\"destino\">");
+            for (String vertice : vertices) {
+                out.println("<option value=\"" + vertice + "\">" + vertice + "</option>");
+            }
+            out.println("</select>");
+            out.println("<H1></H1>");
+            out.println("Costo: <input id=\"costo\" name=\"costo\" type=\"int\" placeholder=\"Ingrese el precio\" required=\"true\"/>");
+            out.println("<H1></H1>");
+            out.println("Tiempo de viaje: <input id=\"tiempo\" name=\"tiempo\" type=\"int\" placeholder=\"Ingrese el tiempo de demora\" required=\"true\"/>");
+            out.println("<H1></H1>");
+            out.println("<input id=\"ruta\" type=\"submit\" value=\"Añadir ruta\"/>");
+            out.println("</form>");
+            out.println("</div>");
+
+            out.println("<div>");
+            out.println("<label>");
+            out.println(GrafoSingleton.instanciaCosto().mostrarVertices());
+            out.println("</label>");
+            out.println("<br/>");
+            out.println("<label>");
+            out.println(GrafoSingleton.instanciaCosto().mostrarAristas());
+            out.println("</label>");
+            out.println("</div>");
+
+
+ */

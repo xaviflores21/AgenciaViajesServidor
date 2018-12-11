@@ -70,6 +70,6 @@ public class Nodo<K, V, C> {
 
     @Override
     public String toString() {
-        return id.toString() + valor.toString() + "";
+        return id.toString() + " " + valor.toString();
     }
 }

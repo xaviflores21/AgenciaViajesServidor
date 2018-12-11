@@ -99,16 +99,27 @@ public class Grafo<K, V, C> {
         return vertices.getValores();
     }
 
-    public String mostrar() {
+    public String mostrarVertices(){
+        String res = "";
+        String aux = " - ";
+        List<Nodo<K, V, C>> vertic = getValoresVertices();
+        for (Nodo<K, V, C> vertice : vertic) {
+            res += vertice.getId() + aux;            
+        }
+        return res;
+    }
+    
+    
+    public String mostrarAristas() {
         String res = "";
         List<Nodo<K, V, C>> vertic = getValoresVertices();
         for (Nodo<K, V, C> vertice : vertic) {
-            res += ("\n" + vertice.getId() + ": \n");
+            res += vertice.getId();
             List<Arista<K, V, C>> list = vertice.getAristas();
             for (Arista<K, V, C> nodo : list) {
-                res += (" -> " + nodo.getDestino().getId().toString() + "(" + nodo.getCosto() + ")");
+                res += (" - " + nodo.getDestino().getId().toString() + " = " + nodo.getCosto() + " Bs.");
             }
-            res += "\n";
+            //res += "\n";
         }
         return res;
     }
@@ -123,16 +134,16 @@ public class Grafo<K, V, C> {
 
     public ArrayList<Camino> obtenerCaminos(K origen, K destino) {
         ArrayList<Camino> caminos = new ArrayList<>();
-        
+
         Nodo<K, V, C> $origen = vertices.obtener(origen);
         Nodo<K, V, C> $destino = vertices.obtener(destino);
-        
+
         Queue<Camino<K, V, C>> cola = new LinkedList<>();
         Camino<K, V, C> camino = new Camino<>();
-        
+
         camino.agregar($origen, 0);
         cola.add(camino);
-        
+
         while (!cola.isEmpty()) {
             Camino<K, V, C> actual = cola.poll();
             Nodo<K, V, C> ultimo = actual.ultima();
@@ -167,66 +178,4 @@ public class Grafo<K, V, C> {
         return caminoMenor;
     }
 
-    // ----------- clase Camino ---- para encontrar los caminos
-    public class Camino<K, V, C> {
-
-        ArrayList<Nodo<K, V, C>> list;
-        int costo;
-
-        public Camino() {
-            list = new ArrayList<>();
-            costo = 0;
-        }
-
-        public Camino(ArrayList<Nodo<K, V, C>> list, int costo) {
-            this.list = list;
-            this.costo = costo;
-        }
-
-        public ArrayList<Nodo<K, V, C>> getLista() {
-            return list;
-        }
-
-        public void setLista(ArrayList<Nodo<K, V, C>> list) {
-            this.list = list;
-        }
-
-        public int getCosto() {
-            return costo;
-        }
-
-        public void setCosto(int costo) {
-            this.costo = costo;
-        }
-
-        public void agregar(Nodo<K, V, C> nodo, int costo) {
-            this.list.add(nodo);
-            this.costo += costo;
-        }
-
-        public boolean contiene(Nodo<K, V, C> nodo) {
-            for (Nodo<K, V, C> nodo1 : list) {
-                if (nodo.getId() == nodo1.getId()) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public Nodo<K, V, C> ultima() {
-            return list.get(list.size() - 1);
-        }
-
-        public Camino getCopia() {
-            Camino camino = new Camino();
-            camino.setLista((ArrayList) this.getLista().clone());
-            camino.setCosto(this.getCosto());
-            return camino;
-        }
-
-        @Override
-        public String toString() {
-            return costo + "";
-        }
-    }
 }
