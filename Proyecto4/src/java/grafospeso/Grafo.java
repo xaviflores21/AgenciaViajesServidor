@@ -101,10 +101,9 @@ public class Grafo<K, V, C> {
 
     public String mostrarVertices(){
         String res = "";
-        String aux = " - ";
         List<Nodo<K, V, C>> vertic = getValoresVertices();
         for (Nodo<K, V, C> vertice : vertic) {
-            res += vertice.getId() + aux;            
+            res += vertice.getId() + "<br>";        
         }
         return res;
     }
@@ -114,16 +113,16 @@ public class Grafo<K, V, C> {
         String res = "";
         List<Nodo<K, V, C>> vertic = getValoresVertices();
         for (Nodo<K, V, C> vertice : vertic) {
-            res += vertice.getId();
+            //res += vertice.getId();
             List<Arista<K, V, C>> list = vertice.getAristas();
             for (Arista<K, V, C> nodo : list) {
-                res += (" - " + nodo.getDestino().getId().toString() + " = " + nodo.getCosto() + " Bs.");
+                res += vertice.getId()+ (" - " + nodo.getDestino().getId().toString() + " = " + nodo.getCosto() + " Bs." + " <br>");
             }
-            //res += "\n";
+            res += "\n";
         }
         return res;
     }
-
+ 
     public int getMenor() {
         return menor;
     }

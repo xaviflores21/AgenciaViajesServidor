@@ -68,7 +68,8 @@ public class Inicio extends HttpServlet {
 
             out.println("<div>");
             out.println("<label>");
-            out.println("Puntos:");
+            out.println("Ciudades:");
+            out.println("<br>");
             out.println("</label>");
             out.println("<label>");
             out.println(GrafoSingleton.instanciaCosto().mostrarVertices());
@@ -145,14 +146,39 @@ public class Inicio extends HttpServlet {
             out.println("<div>");
             out.println("<label>");
             out.println("Destinos:");
+            out.println("<br>");
             out.println("</label>");
-            String pulsado = request.getParameter("submit");
-            if (pulsado.equals("Guardar Ruta")) {
-                out.println("<label>");
+            out.println("<label>");
                 out.println(GrafoSingleton.instanciaCosto().mostrarAristas());
                 out.println("</label>");
-            }
+            /*String pulsado = request.getParameter("submit");
+            if (pulsado.equals("Guardar Ruta")) {
+                
+            }*/
             out.println("</div>");
+            
+            out.println("<br>");
+
+            out.println("<div>");
+            out.println("<form method=\"get\" action=\"/Proyecto4/Eliminar\">");
+            out.println("<table>");
+            out.println("<tr>");
+            out.println("<td>");
+            out.println("Elimiar:");
+            out.println("</td>");
+            out.println("<td>");
+            out.println("<input id=\"nombre\" name=\"nombre\" type=\"text\" placeholder=\"Ingrese nombre de la ciudad\" required=\"false\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td colspan=\"2\">");
+            out.println("<input id= \nuevo\" type=\"submit\" value=\"Eliminar\"/>");
+            out.println("</td>");
+            out.println("</tr>");
+            out.println("</table>");
+            out.println("</form>");
+            out.println("</div>");
+            
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
